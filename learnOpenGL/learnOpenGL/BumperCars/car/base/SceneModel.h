@@ -19,9 +19,10 @@ typedef struct {
     GLKVector3 max;
 }
 SceneAxisAllignedBoundingBox;
+
 @interface SceneModel : NSObject
-@property(nonatomic,copy)NSString *name;
-@property(nonatomic,assign)SceneAxisAllignedBoundingBox axisAlignedBoundingBox;
+@property(nonatomic,copy,readonly)NSString *name;
+@property(nonatomic,assign,readonly)SceneAxisAllignedBoundingBox axisAlignedBoundingBox;
 
 -(id)initWithName:(NSString *)aName
              mesh:(SceneMesh *)aMesh
