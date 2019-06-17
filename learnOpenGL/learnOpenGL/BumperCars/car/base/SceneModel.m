@@ -26,5 +26,18 @@
     }
     return self;
 }
+-(instancetype)init{
+    NSAssert(0, @"Invslid initalizer");
+    self = nil;
+    return self;
+}
 
+-(void)preareToDraw{
+    [self.mesh prepareToDraw];
+}
+-(void)draw{
+    [self.mesh prepareToDraw];
+    [self.mesh drawUnidexedWithMode:GL_TRIANGLES startVertexIndex:0 numberOfVertices:self.numberOfVertices];
+}
+//顶点树数据改变后，重新计算边界
 @end
