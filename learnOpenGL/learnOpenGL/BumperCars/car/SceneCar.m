@@ -80,8 +80,35 @@ static long bounceCount;
 
 #pragma mark - 检测cars之间的碰撞
 -(void)bounceOffcars:(NSArray *)cars elapsedTime:(NSTimeInterval)elapsedTimeeSeconds{
-    for (SceneCar *currentCar in <#collection#>) {
-        <#statements#>
+    for (SceneCar *currentCar in cars) {
+        if (currentCar != self) {
+            float distance = GLKVector3Distance(self.nextPosition, currentCar.nextPosition);
+            if ((2.0f * self.radius) > distance) {
+                ++bounceCount;
+                GLKVector3 ownVelocity = self.velocity;
+                GLKVector3 otherVelocity = currentCar.velocity;
+                GLKVector3 directionToOtherCar = GLKVector3Subtract(currentCar.postition, self.postition);
+                directionToOtherCar = GLKVector3Normalize(directionToOtherCar);
+
+                GLKVector3 negDirectionToOtherCar = GLKVector3Negate(directionToOtherCar);
+                GLKVector3 tanOwnVelocity = GLKVector3MultiplyScalar(directionToOtherCar, GLKVector3DotProduct(ownVelocity, negDirectionToOtherCar)/*点乘*/);
+                GLKVector3 tanOtherVelocity = GLKVector3MultiplyScalar(directionToOtherCar, GLKVector3DotProduct(otherVelocity, directionToOtherCar));
+                GLKVector3 travelDistance;
+                //更新自己的速度
+                self.velocity = GLKVector3Subtract(ownVelocity, tanOwnVelocity);
+                travelDistance = GLKVector3MultiplyScalar(self.velocity, elapsedTimeeSeconds);
+                self.nextPosition = GLKVector3Add(self.postition, travelDistance);
+
+                //更新其他car的速度
+                currentCar.velocity = GLKVector3Subtract(otherVelocity, tanOtherVelocity);
+                travelDistance = GLKVector3MultiplyScalar(currentCar.velocity, elapsedTimeeSeconds);
+                currentCar.nextPosition = GLKVector3Add(currentCar.postition, travelDistance);
+            }
+        }
     }
+}
+
+-(void)spinTowardDirectionOfMotion:(NSTimeInterval)elapsed{
+    
 }
 @end
