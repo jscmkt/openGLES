@@ -109,6 +109,95 @@ static long bounceCount;
 }
 
 -(void)spinTowardDirectionOfMotion:(NSTimeInterval)elapsed{
-    
+    self.yawRadians = SceneScalarSlowLowPassFilter(elapsed, self.targetYawRadians, self.yawRadians);
+    if (self.mCarId > 0) {
+        NSLog(@"yawRadians %f",GLKMathRadiansToDegrees(self.yawRadians));
+    }
+}
+
+//更新car 的位置、偏航角和速度
+// 模拟与墙和其他car的碰撞
+-(void)updateWithController:(id<SceneCarControllerProtocol>)controller{
+    //0.01秒和0.5秒之间
+    NSTimeInterval elapsedTimeSeconds = MIN(MAX([controller timeSinceLastUpdate], 0.01f), 0.5f);
+    GLKVector3 travelDistace = GLKVector3MultiplyScalar(self.velocity, elapsedTimeSeconds);
+    self.nextPosition = GLKVector3Add(self.nextPosition, travelDistace);
+
+    SceneAxisAllignedBoundingBox rinkBoundingBox = [controller rinkBoundingBox];
+
+    [self bounceOffcars:[controller cars] elapsedTime:elapsedTimeSeconds];
+    [self bounceOffWallsWithBoundingBox:rinkBoundingBox];
+    if (0.1 > GLKVector3Length(self.velocity)) {
+        //速度太小，方向可能是死角，随机换一个方向
+        self.velocity = GLKVector3Make((random() / (0.5f * RAND_MAX)) - 1.0f, 0, (random() / (0.5 * RAND_MAX))-1.0f);
+    }
+    else if (4 > GLKVector3Length(self.velocity))
+    { //缓慢加速
+        self.velocity = GLKVector3MultiplyScalar(self.velocity, 1.01f);
+    }
+
+    //car的方向和标准方向的余弦值
+    float dotProduct = GLKVector3DotProduct(GLKVector3Normalize(self.velocity), GLKVector3Make(0, 0, -1.0));
+
+    if (0.0 > self.velocity.x) {
+        //偏航角为正
+        self.targetYawRadians = acosf(dotProduct);
+    }else{
+        //偏航角为负
+        self.targetYawRadians = -acosf(dotProduct);
+    }
+    [self spinTowardDirectionOfMotion:elapsedTimeSeconds];
+    self.nextPosition = self.nextPosition;
+
+}
+
+//绘制
+-(void)drawWithBaseEffect:(GLKBaseEffect *)anEffect{
+    //缓存
+    GLKMatrix4 savedModelViewMatrix = anEffect.transform.modelviewMatrix;
+    GLKVector4 savedDiffuseColor = anEffect.material.diffuseColor;
+    GLKVector4 savedAmbientColor = anEffect.material.ambientColor;
+
+    // Translate to the model's position
+    anEffect.transform.modelviewMatrix = GLKMatrix4Translate(savedModelViewMatrix, self.postition.x, self.postition.y, self.postition.z);
+    //绕Y轴旋转偏航角大小
+    anEffect.transform.modelviewMatrix =
+    GLKMatrix4Rotate(anEffect.transform.modelviewMatrix, self.yawRadians, 0, 1.0, 0);
+    //设置材质
+    anEffect.material.diffuseColor = self.color;
+    anEffect.material.ambientColor = self.color;
+    [anEffect prepareToDraw];
+    [self.model draw];
+
+    anEffect.transform.modelviewMatrix = savedModelViewMatrix;
+    anEffect.material.diffuseColor = savedDiffuseColor;
+    anEffect.material.ambientColor = savedAmbientColor;
+}
+
+-(void)onSpeedChande:(BOOL)slow{
+    if (slow) {
+        self.velocity = GLKVector3MultiplyScalar(self.velocity, 0.9);
+    }else{
+        self.velocity = GLKVector3MultiplyScalar(self.velocity, 1.1);
+    }
 }
 @end
+extern GLfloat SceneScalarFastLowPassFilter(NSTimeInterval elapsed, GLfloat target,GLfloat current){
+    return current + 50.0 * elapsed * (target - current);
+}
+
+extern GLfloat SceneScalarSlowLowPassFilter(NSTimeInterval elapsed, GLfloat target,GLfloat current){
+    return current + 4.0 * elapsed * (target - current);
+}
+extern GLKVector3 SceneVector3FastLowPassFilter(NSTimeInterval elapsed, GLKVector3 target,GLKVector3 current){
+    return GLKVector3Make(SceneScalarFastLowPassFilter(elapsed, target.x, current.x),
+                          SceneScalarFastLowPassFilter(elapsed, target.y, current.y),
+                          SceneScalarFastLowPassFilter(elapsed, target.z, current.z));
+}
+extern GLKVector3 SceneVector3SlowLowPassFilter(NSTimeInterval elapsed, GLKVector3 target,GLKVector3 current){
+    return GLKVector3Make(SceneScalarSlowLowPassFilter(elapsed, target.x, current.x),
+                          SceneScalarSlowLowPassFilter(elapsed, target.y, current.y),
+                          SceneScalarSlowLowPassFilter(elapsed, target.z, current.z));
+}
+
+

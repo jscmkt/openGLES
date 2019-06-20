@@ -46,11 +46,12 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)onSpeedChande:(BOOL)slow;
 
 @end
-
+///滤波器函数
+///高通滤波器函数，可以模拟撞墙后震动的效果
 extern GLfloat SceneScalarFastLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLfloat target,GLfloat current);
 
 extern GLfloat SceneScalarSlowLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLfloat target,GLfloat current);
-extern GLfloat SceneVector3FastLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLfloat target,GLfloat current);
-extern GLfloat SceneVector3SlowLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLfloat target,GLfloat current);
+extern GLKVector3 SceneVector3FastLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLKVector3 target,GLKVector3 current);
+extern GLKVector3 SceneVector3SlowLowPassFilter(NSTimeInterval timeSineceLastUpdate, GLKVector3 target,GLKVector3 current);
 
 NS_ASSUME_NONNULL_END
