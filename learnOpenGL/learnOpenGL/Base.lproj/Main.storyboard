@@ -109,7 +109,7 @@
         <scene sceneID="uB0-lW-SGa">
             <objects>
                 <viewController id="768-n6-klA" customClass="bumperCarsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nbt-hV-eav">
+                    <view key="view" contentMode="scaleToFill" id="nbt-hV-eav" customClass="GLKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -175,6 +175,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6dE-kD-DCw"/>
                     </view>
+                    <connections>
+                        <outlet property="myBounceLabel" destination="2e6-y8-jeQ" id="igH-3l-2dm"/>
+                        <outlet property="myVelocityLabel" destination="6SD-EH-bRL" id="y4F-vA-g2w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaN-Me-ZCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
