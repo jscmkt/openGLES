@@ -71,7 +71,7 @@ static const int  SceneNumberOfPOVAnimationSeconds = 2.0;
     newCar = [[SceneCar alloc]initWithModel:self.carModel position:GLKVector3Make(-1.0, 0.0, 1.0) velocity:GLKVector3Make(-1.5, 0.0, 1.5) color:GLKVector4Make(.5, .5, 0, 1.0)];
     [cars addObject:newCar];
 
-    newCar = [[SceneCar alloc]initWithModel:self.carModel position:GLKVector3Make(1.0, 0, 1.0) velocity:GLKVector3Make(1.5, 0.0, 1.5) color:GLKVector4Make(0, 0.5, 0, 1.0)];
+    newCar = [[SceneCar alloc]initWithModel:self.carModel position:GLKVector3Make(1.0, 0, -1.0) velocity:GLKVector3Make(1.5, 0.0, 1.5) color:GLKVector4Make(0.5, 0, 0, 1.0)];
     [cars addObject:newCar];
 
     newCar = [[SceneCar alloc]initWithModel:self.carModel position:GLKVector3Make(2.0, 0, -2.0) velocity:GLKVector3Make(-1.5, 0, -0.5) color:GLKVector4Make(0.3, 0.0, 0.3, 1.0)];
@@ -87,7 +87,7 @@ static const int  SceneNumberOfPOVAnimationSeconds = 2.0;
         self.targetLookAtPosition = GLKVector3Make(0.0, 0.5, 0.0);
     }else{
         SceneCar *viewCar = [cars lastObject];
-        self.targetEyePosition = GLKVector3Make(viewCar.postition.x, viewCar.postition.y, viewCar.postition.z);
+        self.targetEyePosition = GLKVector3Make(viewCar.postition.x, viewCar.postition.y + 0.45, viewCar.postition.z);
         self.targetLookAtPosition = GLKVector3Add(self.eyePosition, viewCar.velocity);
 
 
@@ -95,17 +95,67 @@ static const int  SceneNumberOfPOVAnimationSeconds = 2.0;
 }
 -(void)update{
     if (0 < self.pointOfViewAnimationCountDown) {
-        self.pointOfViewAnimationCountDown -= self.timeSinceLastUpdate;  
+        self.pointOfViewAnimationCountDown -= self.timeSinceLastUpdate;
+        self.eyePosition = SceneVector3SlowLowPassFilter(self.timeSinceLastUpdate,
+                                                         self.targetEyePosition,
+                                                         self.eyePosition);
+        self.lookAtPosition = SceneVector3SlowLowPassFilter(self.timeSinceLastUpdate,
+                                                            self.targetLookAtPosition,
+                                                            self.lookAtPosition);
+    }else{
+        NSLog(@"%f %f %f %f", self.timeSinceLastUpdate, self.eyePosition.x, self.eyePosition.y, self.eyePosition.z);
+        self.eyePosition = SceneVector3FastLowPassFilter(self.timeSinceLastUpdate, self.targetEyePosition, self.eyePosition);
+        self.lookAtPosition = SceneVector3FastLowPassFilter(self.timeSinceLastUpdate, self.targetLookAtPosition, self.lookAtPosition);
     }
+    [cars makeObjectsPerformSelector:@selector(updateWithController:) withObject:self];
+
+    [self updatePointOfView];
 }
 
+// 渲染场景代码
+-(void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
+    glClearColor(0.3, 0.3, 0.3, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    self.baseEffect.light0.diffuseColor = GLKVector4Make(1.0, 1.0, 1.0, 1.0);
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+    const GLfloat aspectRatio = (GLfloat)view.drawableWidth / (GLfloat) view.drawableHeight;
+    self.baseEffect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(35.0f), aspectRatio, 0.1, 25.0);
+    self.baseEffect.transform.modelviewMatrix =
+    GLKMatrix4MakeLookAt(
+                         self.eyePosition.x,
+                         self.eyePosition.y,
+                         self.eyePosition.z,
+                         self.lookAtPosition.x,
+                         self.lookAtPosition.y,
+                         self.lookAtPosition.z,
+                         0, 1, 0);
+
+    //场地
+    [self.baseEffect prepareToDraw];
+    [self.rinkModel draw];
+
+    //碰碰车
+    [cars makeObjectsPerformSelector:@selector(drawWithBaseEffect:) withObject:self.baseEffect];
+
+    //碰撞次数
+    self.myBounceLabel.text = [NSString stringWithFormat:@"%ld",[SceneCar getBounceCount]];
+    SceneCar *viewerCar = [cars lastObject];
+    self.myVelocityLabel.text = [NSString stringWithFormat:@"%.1f",GLKVector3Length(viewerCar.velocity)];
+
+}
+
+// 支持设备自动旋转
+- (BOOL)shouldAutorotate
 {
-    return (interfaceOrientation !=
-            UIInterfaceOrientationPortraitUpsideDown &&
-            interfaceOrientation !=
-            UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+/**
+ *  设置特殊的界面支持的方向,这里特殊界面只支持Home在右侧的情况
+ */
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeRight;
 }
 
 -(NSArray *)cars{

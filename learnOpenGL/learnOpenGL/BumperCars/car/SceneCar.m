@@ -67,12 +67,12 @@ static long bounceCount;
     //z的边界的判断
     if ((rinkBoundingBox.min.z + self.radius)/*边框最小的z+小车的半径*/ > self.nextPosition.z) {
         //下一个点超过X最小的边界
-        self.nextPosition = GLKVector3Make(rinkBoundingBox.min.x, self.nextPosition.y, self.nextPosition.z + self.radius);
+        self.nextPosition = GLKVector3Make(self.nextPosition.x, self.nextPosition.y, rinkBoundingBox.min.z + self.radius);
         //撞墙后x方向 相反
         self.velocity = GLKVector3Make(self.velocity.x, self.velocity.y, -self.velocity.z);
     }else if ((rinkBoundingBox.max.z - self.radius) < self.nextPosition.z){
         //下一个点超过了x最大的边界
-        self.nextPosition = GLKVector3Make(rinkBoundingBox.max.x, self.nextPosition.y, self.nextPosition.z - self.radius);
+        self.nextPosition = GLKVector3Make(self.nextPosition.x, self.nextPosition.y, rinkBoundingBox.max.z - self.radius);
         self.velocity = GLKVector3Make(self.velocity.x, self.velocity.y,-self.velocity.z);
         
     }
@@ -91,7 +91,7 @@ static long bounceCount;
                 directionToOtherCar = GLKVector3Normalize(directionToOtherCar);
 
                 GLKVector3 negDirectionToOtherCar = GLKVector3Negate(directionToOtherCar);
-                GLKVector3 tanOwnVelocity = GLKVector3MultiplyScalar(directionToOtherCar, GLKVector3DotProduct(ownVelocity, negDirectionToOtherCar)/*点乘*/);
+                GLKVector3 tanOwnVelocity = GLKVector3MultiplyScalar(negDirectionToOtherCar, GLKVector3DotProduct(ownVelocity, negDirectionToOtherCar)/*点乘*/);
                 GLKVector3 tanOtherVelocity = GLKVector3MultiplyScalar(directionToOtherCar, GLKVector3DotProduct(otherVelocity, directionToOtherCar));
                 GLKVector3 travelDistance;
                 //更新自己的速度
@@ -147,7 +147,7 @@ static long bounceCount;
         self.targetYawRadians = -acosf(dotProduct);
     }
     [self spinTowardDirectionOfMotion:elapsedTimeSeconds];
-    self.nextPosition = self.nextPosition;
+    self.postition = self.nextPosition;
 
 }
 
