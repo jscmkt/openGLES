@@ -108,7 +108,38 @@ extern AGLKFrustumIntersectionType AGLKFrustumComparePoint
 (
  const AGLKFrustum *frustumPtr,
  GLKVector3 point
- );
+ ){
+    NSCAssert(AGLKFrustumHasDimention(frustumPtr), @"Invalid frustumPtr parameter");
+
+    AGLKFrustumIntersectionType result = AGLKFrustumIn;
+
+    //eye到point的向量
+    const GLKVector3 eyeToPoint = GLKVector3Subtract(frustumPtr->eyePosition, point);
+
+    //z轴的分量
+    const GLfloat pointZComponent = GLKVector3DotProduct(eyeToPoint, frustumPtr->zUnitVector);
+
+    if (pointZComponent > frustumPtr->farDistance || pointZComponent < frustumPtr->nearDistance) {
+        return AGLKFrustumOut;
+    }else{
+        const GLfloat pointYComponent = GLKVector3DotProduct(eyeToPoint, frustumPtr->yUnitVector);
+        const GLfloat frustumHeightAtZ = pointZComponent * frustumPtr->tangentOfHalfFieldOfView;
+
+        if (pointYComponent > frustumHeightAtZ || pointYComponent < -frustumHeightAtZ) {
+            result = AGLKFrustumOut;
+        }else{
+            //X轴分量
+            const GLfloat pointXComponent = GLKVector3DotProduct(eyeToPoint, frustumPtr->xUnitVector);
+            const GLfloat frustumWidthAtZ = frustumHeightAtZ * frustumPtr->aspectRatio;
+
+            if (pointXComponent > frustumWidthAtZ || pointXComponent < -frustumWidthAtZ) {
+                result = AGLKFrustumOut;
+            }
+        }
+    }
+    return  result;
+}
+
 
 //判断球体是否子啊平截体内
 extern AGLKFrustumIntersectionType AGLKFrustumCompareSphere
@@ -116,13 +147,70 @@ extern AGLKFrustumIntersectionType AGLKFrustumCompareSphere
  const AGLKFrustum *frustumPtr,
  GLKVector3 center,
  GLfloat radius
- );
+ ){
+    NSCAssert(AGLKFrustumHasDimention(frustumPtr), @"Invalid frustumPtr parameter");
+    AGLKFrustumIntersectionType result = AGLKFrustumIn;
+
+    const GLKVector3 eyeToCenter = GLKVector3Subtract(frustumPtr->eyePosition , center);
+    const GLfloat centerZCompontent = GLKVector3DotProduct(eyeToCenter, frustumPtr->zUnitVector);
+    if (centerZCompontent > (frustumPtr->farDistance + radius) || centerZCompontent < (frustumPtr->nearDistance - radius)) {
+        result = AGLKFrustumOut;
+    }else if (centerZCompontent > (frustumPtr->farDistance - radius) || centerZCompontent < (frustumPtr->nearDistance + radius)){
+        result = AGLKFrustumInterSects;
+    }
+
+    if (AGLKFrustumOut != result) {
+        const GLfloat centerYcomponent = GLKVector3DotProduct(eyeToCenter, frustumPtr->yUnitVector);
+        const GLfloat yDistance = frustumPtr->sphereFactorY * radius;
+        const GLfloat frustumHalfHeightAtZ = centerZCompontent * frustumPtr->tangentOfHalfFieldOfView;
+        if (centerYcomponent > (frustumHalfHeightAtZ + yDistance) || centerYcomponent < (-frustumHalfHeightAtZ - yDistance)) {
+            result = AGLKFrustumOut;
+        }
+        else if (centerYcomponent > (frustumHalfHeightAtZ - yDistance) || centerYcomponent < (-frustumHalfHeightAtZ + yDistance)){
+            result = AGLKFrustumInterSects;
+        }
+
+
+    }
+    return result;
+}
 
 extern GLKMatrix4 AGLKFrustumMakePerspective(
                                              const AGLKFrustum *frustumPtr
-                                             );
+                                             ){
+    NSCAssert(AGLKFrustumHasDimention(frustumPtr), @"Invalid frustumPtr parameter");
+    const GLfloat cotan = 1.0 / frustumPtr-> tangentOfHalfFieldOfView;
+    const GLfloat nearZ = frustumPtr->nearDistance;
+    const GLfloat farZ = frustumPtr->farDistance;
+    GLKMatrix4 m = {
+        cotan / frustumPtr->aspectRatio, 0.0, 0.0, 0.0,
+        0.0, cotan, 0.0, 0.0,
+        0.0, 0.0, (farZ + nearZ) / (nearZ - farZ), -1.0f,
+        0.0, 0.0, (2.0 * farZ * nearZ) / (nearZ - farZ),0.0
+
+    };
+    return m;
+}
 
 extern GLKMatrix4 AGLKFrustumMakeModelView(
                                            const AGLKFrustum *frustumMakePtr
-                                           );
+                                           ){
+    NSCAssert(AGLKFrustumHasDimention(frustumMakePtr), @"Invalid frustumPtr parameter");
+    const GLKVector3 eyePosition = frustumMakePtr->eyePosition;
+    const GLKVector3 xNormal = frustumMakePtr->xUnitVector;
+    const GLKVector3 yNormal = frustumMakePtr->yUnitVector;
+    const GLKVector3 zNormal = frustumMakePtr->zUnitVector;
+    const GLfloat xTranslation = GLKVector3DotProduct(xNormal, eyePosition);
+    const GLfloat yTranslation = GLKVector3DotProduct(yNormal, eyePosition);
+    const GLfloat zTranslation = GLKVector3DotProduct(zNormal, eyePosition);
+
+    GLKMatrix4 m ={
+        xNormal.x, yNormal.x, zNormal.x, 0.0,
+        xNormal.y, yNormal.y, zNormal.y, 0.0,
+        xNormal.z, yNormal.z, zNormal.z, 0.0,
+
+        -xTranslation, -yTranslation, -zTranslation, 1.0f
+    };
+    return m;
+}
 
