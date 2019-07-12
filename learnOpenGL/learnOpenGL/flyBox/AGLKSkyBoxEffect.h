@@ -15,9 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)GLfloat xSize;
 @property(nonatomic,assign)GLfloat ySize;
 @property(nonatomic,assign)GLfloat zSize;
-@property(nonatomic,strong,readonly)GLKEffectPropertyTexture *textureCubMap;
+@property(nonatomic,strong,readonly)GLKEffectPropertyTexture *textureCubeMap;
 @property(nonatomic,strong,readonly)GLKEffectPropertyTransform *transform;
 
+-(void)prepareToDraw;
+-(void)draw;
+ 
 @end
 
 NS_ASSUME_NONNULL_END
