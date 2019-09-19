@@ -7,7 +7,7 @@
 //
 
 #import <GLKit/GLKit.h>
-
+#import <OpenGLES/ES2/glext.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AGLKSkyBoxEffect : NSObject

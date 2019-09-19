@@ -1,0 +1,12 @@
+视频相关处理: 
+  音视频大牛雷霄骅:
+     https://blog.csdn.net/stt2836/article/details/87924142
+
+
+
+
+
+
+OpenGLES相关:
+   落影loyinglin
+      https://www.jianshu.com/nb/2135411

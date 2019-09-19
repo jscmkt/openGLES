@@ -8,7 +8,7 @@
 
 #import "AGLKSkyBoxEffect.h"
 
-///Cube has 2 triangles x 6 sides + 2 for strip = 14; 2e个观察者的weiz
+///Cube has 2 triangles x 6 sides + 2 for strip = 14; 2个观察者的位置
 const static int AGLKSkyBoxNumVertexIndices = 14;
 
 //cube has 8corners x 3 float pre vertex = 24;
@@ -88,13 +88,13 @@ enum{
         //立方体的8个角
         const float vertices[AGLKSkyBoxNumCoords] = {
             -0.5, -0.5, 0.5,
-            0.5, -0.5, 0.5,
-            -0.5, 0.5, 0.5,
-            0.5, 0.5, 0.5,
+             0.5, -0.5, 0.5,
+            -0.5,  0.5, 0.5,
+             0.5,  0.5, 0.5,
             -0.5, -0.5, -0.5,
-            0.5, -0.5, -0.5,
-            -0.5, 0.5, -0.5,
-            0.5, 0.5, -0.5,
+             0.5, -0.5, -0.5,
+            -0.5,  0.5, -0.5,
+             0.5,  0.5, -0.5,
         };
 
         //创建缓存对象，并返回缓存标志-顶点
@@ -118,6 +118,136 @@ enum{
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     }
     return self;
+}
+
+#pragma mark - 准备绘制
+-(void)prepareToDraw{
+    if (program == 0) {
+        //加载顶点/片元着色器程序
+        [self loadShaders];
+    }
+
+    if (program != 0) {
+        //1.使用progr
+        glUseProgram(program);
+
+        //移动天空盒子的模型视图矩阵
+        GLKMatrix4 skyboxModelView = GLKMatrix4Translate(self.transform.modelviewMatrix, self.center.x, self.center.y, self.center.z);
+
+        //放大天空盒子模型视图矩阵
+        skyboxModelView = GLKMatrix4Scale(skyboxModelView, self.xSize, self.ySize, self.zSize);
+
+        //将模型视图矩阵与投影矩阵结合-矩阵相乘
+        GLKMatrix4 modelViewProjectionMatrix = GLKMatrix4Multiply(self.transform.projectionMatrix, skyboxModelView);
+
+        //将当前程序对象指定uniform变量的值
+        /*
+         什么叫MVPMatrix?
+         MVPMatrix，本质就是一个变换矩阵，用来把一个世界坐标系的点转换成裁剪空间的位置
+         3D物体从建模到最终显示需要经历一下几个阶段：
+         1.对象空间(Object Space)
+         2.世界空间(World Space)
+         3.照相机空间(Camera Space/Eye Space)
+         4.裁剪空间(Clipping Space)
+         5.设备空间(normalized device space)
+         6.视口空间(Viewport)
+
+         从对象空间到世界空间的变换叫做Model-ToWorld变换,
+         从世界空间到照相机空间的变换叫做world-To-View变换
+         从照相机空间到裁剪空间变换叫做View-To-Projection变换
+         合起来,从对象空间-裁剪空间的这个过程就是我们所说的MVP变换,
+         这里的每一个变换都是乘以一个矩阵3个矩阵相乘最后还是一个矩阵,
+         这里传递到顶点着色器中的MVPMatrix矩阵
+         gl_Position = u_mvpMatrix * vec4(a_position,1.0);
+
+         glUniformMatrix4fv (GLint location, GLsizei count, GLboolean transpose, const GLfloat* value)
+         参数1:location,要更改的uniform变量的位置
+         参数2:count,更改矩阵的个数
+         参数3:transpose,只是否要转置矩阵,并将它作为uniform变量的值,必须为GL_FAlSE
+         参数4:value,只想count个数的元素指针,用来更新uniform变量的值
+         为当前程序z对象指定Uniforms变量的值
+         */
+        glUniformMatrix4fv(uniforms[AGLKMVPMatrix], 1, 0, modelViewProjectionMatrix.m);
+        //纹理采样均匀变量
+        /*
+         void glUniform1f(GLint location,  GLfloat v0);
+         为当前程序对象指定Uniform变量的值
+         location:指明要更改的uniform变量的位置
+         v0:在指定的uniform变量中要使用的新值
+         */
+        glUniform1f(uniforms[AGLKSamplersCube], 0);
+        //顶点数组ID 如果等于0
+        if (vertexArrayID == 0) {
+            //OES 拓展类
+            //设置顶点属性指针
+            //为vertexArrayID申请一个标记
+            glGenVertexArraysOES(1, &vertexArrayID);
+            //绑定一块区域到overtexArrayID上
+            glBindVertexArrayOES(vertexArrayID);
+            //glEnableVertexAttribArray启用指定属性没才可在顶点着色器中访问顶点的属性数据
+            //着色器能否读取到数据,由是否启用了对应的属性决定,这就是glEnableVertexAttribArray的功能,允许顶点着色器读取GPU(服务器端)数据
+            glEnableVertexAttribArray(GLKVertexAttribPosition);
+            //将vertexArrayID 绑定是数组缓存区
+            glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
+            /*
+             读取数据到顶点着色器
+             参数1:读取到顶点中
+             参数2:读取个数
+             参数3:类型
+             参数4:是否归一化
+             参数5:从哪个位置开始读取
+             */
+            glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+        }else{
+            //调用恢复所有先签便携的顶点属性指针与vertexarrayID
+            glBindVertexArrayOES(vertexArrayID);
+        }
+        //a绑定索引id
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
+        //如果绑定的纹理可用
+        if (self.textureCubeMap.enabled) {
+            //绑定纹理
+            //参数1:纹理类型
+            //参数2:纹理名称
+            glBindTexture(GL_TEXTURE_CUBE_MAP, self.textureCubeMap.name);
+
+        }else{
+            //绑定一个空的
+            glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+        }
+    }
+}
+//绘制
+-(void)draw{
+    /*
+     索引绘制方法
+     glDrawElements (GLenum mode, GLsizei count, GLenum type, const GLvoid* indices);
+     参数列表:
+     mode:指定绘制图元的类型,但是如果GL_VERTEX_ARRAY 没有被激活的话，不能生成任何图元。它应该是下列值之一: GL_POINTS, GL_LINE_STRIP,GL_LINE_LOOP,GL_LINES,GL_TRIANGLE_STRIP,GL_TRIANGLE_FAN,GL_TRIANGLES,GL_QUAD_STRIP,GL_QUADS,GL_POLYGON
+     count:绘制图元的数量
+     type 为索引数组(indices)中元素的类型，只能是下列值之一:GL_UNSIGNED_BYTE,GL_UNSIGNED_SHORT,GL_UNSIGNED_INT
+     indices：指向索引数组的指针。
+     */
+    glDrawElements(GL_TRIANGLE_STRIP, AGLKSkyBoxNumVertexIndices, GL_UNSIGNED_BYTE, NULL);
+}
+-(void)dealloc{
+    if (0 != vertexArrayID) {
+        glDeleteVertexArraysOES(1, &vertexArrayID);
+        vertexArrayID = 0;
+
+    }
+    if (0 != vertexBufferID) {
+        glBindBuffer(GL_ARRAY_BUFFER, 0 );
+        glDeleteBuffers(1, &vertexBufferID);
+    }
+    if (0 != indexBufferID) {
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        glDeleteBuffers(1, &indexBufferID);
+    }
+    if (0 != program) {
+        glUseProgram(0);
+        glDeleteProgram(program);
+    }
 }
 #pragma mark - OpenGL ES shader compilation
 //加载着色器

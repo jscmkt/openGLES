@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6wo-Oe-fXh">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TqV-13-Znd">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GLLearnView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -30,7 +30,7 @@
             <objects>
                 <viewController id="hRm-KE-8CG" customClass="AdvanceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYt-pS-4oq" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8du-SC-22R">
@@ -71,7 +71,7 @@
             <objects>
                 <viewController id="STh-7P-Faa" customClass="EarthAndMoonViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zID-jR-NsS" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H0y-ss-u3W">
@@ -95,7 +95,7 @@
             <objects>
                 <viewController id="dST-BX-wYv" customClass="BaseQuareViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HFf-gh-ji3" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gxg-hJ-A2P"/>
@@ -110,7 +110,7 @@
             <objects>
                 <viewController id="768-n6-klA" customClass="bumperCarsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nbt-hV-eav" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="scx-F2-gaZ">
@@ -198,7 +198,7 @@
             <objects>
                 <viewController id="6wo-Oe-fXh" customClass="FrunstumViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lUi-aH-Uhb" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XYH-d9-dvH"/>
@@ -208,12 +208,105 @@
             </objects>
             <point key="canvasLocation" x="3970" y="1941"/>
         </scene>
+        <!--Fly Box View Controller-->
+        <scene sceneID="bqi-dO-6ty">
+            <objects>
+                <viewController id="zpd-nm-3Os" customClass="FlyBoxViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dlh-NY-MtW" customClass="GLKView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qTL-SY-lRk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aH9-XG-gpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3981" y="2619"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="t3e-QR-oB4">
+            <objects>
+                <viewController id="TqV-13-Znd" customClass="APLViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a3f-cx-ac4" customClass="APLEAGView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n4e-b4-S6u" userLabel="Current Time View">
+                                <rect key="frame" x="320" y="20" width="74" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-jC-3NB">
+                                <rect key="frame" x="333" y="24" width="48" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="iQ9-QZ-bAH">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <barButtonItem title="Library" id="xxc-Bi-GdX">
+                                        <connections>
+                                            <action selector="loadMovieFromCameraRoll:" destination="TqV-13-Znd" id="3VE-xW-x4x"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vPO-3h-bcA"/>
+                                    <barButtonItem title="Luma" style="plain" id="RPh-lC-JqK"/>
+                                    <barButtonItem enabled="NO" style="plain" id="ora-G1-EK4">
+                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="h3V-i0-9mn">
+                                            <rect key="frame" x="138" y="5" width="120" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="updateLevels:" destination="TqV-13-Znd" eventType="valueChanged" id="TvR-xd-ywg"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kgm-w0-4cp"/>
+                                    <barButtonItem title="Chroma" style="plain" id="nrr-o4-n53"/>
+                                    <barButtonItem enabled="NO" style="plain" id="Xg9-F0-WYG">
+                                        <slider key="customView" opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="JYh-hb-5kb">
+                                            <rect key="frame" x="274" y="5" width="120" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="updateLevels:" destination="TqV-13-Znd" eventType="valueChanged" id="6sS-M2-Anc"/>
+                                            </connections>
+                                        </slider>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="qda-eP-Stk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="BYd-Me-gHn" appends="YES" id="dWi-1Z-nhE"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="chromaLevelSlider" destination="JYh-hb-5kb" id="bt0-sh-jrd"/>
+                        <outlet property="currentTime" destination="mjb-jC-3NB" id="zc7-D8-fvc"/>
+                        <outlet property="lumaLeverSlider" destination="h3V-i0-9mn" id="i7z-9R-mbe"/>
+                        <outlet property="playerView" destination="a3f-cx-ac4" id="4S8-Fb-ZSC"/>
+                        <outlet property="timeView" destination="n4e-b4-S6u" id="ggx-UI-gCD"/>
+                        <outlet property="toolBar" destination="iQ9-QZ-bAH" id="Mjs-NS-x5K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Fa-dy-AeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BYd-Me-gHn">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="TqV-13-Znd" id="aZe-IA-KnL"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3980" y="3307"/>
+        </scene>
         <!--Normal Line View Controller-->
         <scene sceneID="FOJ-XG-CBo">
             <objects>
                 <viewController id="VnB-I4-4jk" customClass="NormalLineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1AF-jB-Mij" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f42-of-0LG">
@@ -272,7 +365,7 @@
             <objects>
                 <viewController id="V4k-6O-nEx" customClass="PointFlyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62r-Ag-rsM" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lEt-R7-6AS">
@@ -302,7 +395,7 @@
             <objects>
                 <viewController id="oUz-4t-Egq" customClass="animationRoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3VR-lR-qVE" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vJY-BC-bWc">
