@@ -1,0 +1,340 @@
+* {
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+dd,
+dt,
+dl,
+ol,
+p {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+#line {
+  font-size: 0;
+  background: #3d3d3d;
+  color: #3d3d3d;
+  height: 1px;
+  border: none;
+}
+#main {
+  width: 1200px;
+  margin: auto;
+}
+body {
+  background: #f5f7fa;
+}
+.top {
+  width: 100%;
+  height: 70px;
+  background-color: #1c1e21;
+  color: white;
+  display: flex;
+  line-height: 70px;
+  display: block;
+}
+.top .top-tab {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+}
+.top .top-tab:first-child {
+  padding-left: 40px;
+}
+.top .top-tab:hover {
+  color: #408bea;
+}
+.top .top-tab.active {
+  color: #408bea;
+}
+.top input {
+  top: 13px;
+  position: relative;
+  float: right;
+  margin-right: 24px;
+  width: 294px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 0;
+  border-radius: 3px;
+  color: white;
+  text-indent: 15px;
+}
+.top ::-webkit-input-placeholder {
+  color: white;
+}
+#main .top {
+  width: 100%;
+  height: 70px;
+  background-color: #1c1e21;
+  color: white;
+  display: flex;
+  line-height: 70px;
+  display: block;
+}
+#main .top .top-tab {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+}
+#main .top .top-tab:first-child {
+  padding-left: 40px;
+}
+#main .top .top-tab:hover {
+  color: #408bea;
+}
+#main .top .top-tab.active {
+  color: #408bea;
+}
+#main .top input {
+  top: 13px;
+  position: relative;
+  float: right;
+  margin-right: 24px;
+  width: 294px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 0;
+  border-radius: 3px;
+  color: white;
+  text-indent: 15px;
+}
+#main .top ::-webkit-input-placeholder {
+  color: white;
+}
+#main #index {
+  background: #272727;
+  display: flex;
+}
+#main #index .l {
+  padding: 0 30px;
+  flex: 9;
+  width: 860px;
+}
+#main #index .l .banner {
+  padding: 30px 0;
+  display: inline-block;
+  width: 100%;
+  font-size: 0;
+}
+#main #index .l .banner p {
+  display: inline-block;
+  width: 380px;
+  margin: 0 10px;
+}
+#main #index .l .banner p img {
+  width: 100%;
+}
+#main #index .l .hot {
+  margin-bottom: 36px;
+}
+#main #index .l .hot .title {
+  padding: 10px 5px;
+  color: #FFF;
+}
+#main #index .l .hot .title span {
+  font-size: 20px;
+  font-weight: bolder;
+}
+#main #index .l .hot .title:before {
+  content: ".";
+  display: inline-block;
+  width: 5px;
+  margin: 0 10px 0 0;
+  background: #408bea;
+  color: #408bea;
+}
+#main #index .l .hot .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+#main #index .l .hot .list p {
+  width: 140px;
+  margin: 10px;
+}
+#main #index .l .hot .list p img {
+  display: block;
+  width: 100%;
+}
+#main #index .l .hot .list p span {
+  width: 100%;
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  color: #FFF;
+}
+#main #index .l .hot .list p span i {
+  font-style: normal;
+  display: inline-block;
+  width: 100%;
+  color: #a6a6a6;
+}
+#main #index .l .ranking .title {
+  padding: 10px 5px;
+  color: #FFF;
+}
+#main #index .l .ranking .title span {
+  font-size: 20px;
+  font-weight: bolder;
+}
+#main #index .l .ranking .title:before {
+  content: ".";
+  display: inline-block;
+  width: 5px;
+  margin: 0 10px 0 0;
+  background: #408bea;
+  color: #408bea;
+}
+#main #index .l .ranking .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+#main #index .l .ranking .list div {
+  background: #2e2e2e;
+  width: 250px;
+  margin: 8px;
+  display: inline-block;
+}
+#main #index .l .ranking .list div a {
+  display: inline-block;
+  width: 100%;
+  height: 95px;
+}
+#main #index .l .ranking .list div a img {
+  width: 100%;
+  height: 100px;
+  object-fit: none;
+}
+#main #index .l .ranking .list div ol {
+  padding-left: 28px;
+  list-style: decimal-leading-zero;
+  width: 100%;
+  display: inline-block;
+}
+#main #index .l .ranking .list div ol li {
+  color: #FFF;
+  width: 100%;
+  margin: 16px 0;
+}
+#main #index .l .ranking .list div ol li img {
+  width: 80px;
+  padding: 0 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+#main #index .l .ranking .list div ol li p {
+  display: inline-block;
+  vertical-align: middle;
+}
+#main #index .l .ranking .list div ol li p span {
+  display: block;
+  width: 100%;
+}
+#main #index .l .ranking .list div ol li p span:nth-of-type(even) {
+  color: #a6a6a6;
+}
+#main #index .r {
+  padding: 0 16px;
+  border-left: 1px solid #3d3d3d;
+  width: 339px;
+}
+#main #index .r dl {
+  width: 100%;
+}
+#main #index .r dl dt {
+  display: inline-block;
+  line-height: 40px;
+  color: #FFF;
+  font-weight: bolder;
+  font-size: 14px;
+}
+#main #index .r dl.classify dd {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#main #index .r dl.classify dd span {
+  display: inline-block;
+  width: 31%;
+  text-align: center;
+  border-radius: 20px;
+  margin: 5px 2px;
+  line-height: 36px;
+  color: #a6a6a6;
+  background: #3d3d3d;
+}
+#main #index .r dl.recommend dd {
+  width: 100%;
+  display: inline-block;
+}
+#main #index .r dl.recommend dd div {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+#main #index .r dl.recommend dd div img {
+  width: 60px;
+  display: inline-block;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+#main #index .r dl.recommend dd div p {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+#main #index .r dl.recommend dd div p span {
+  width: 100%;
+  font-size: 14px;
+  display: inline-block;
+  color: #FFF;
+}
+#main #index .r dl.recommend dd div p span:nth-of-type(even) {
+  color: #a6a6a6;
+}
+#main #index .r dl.searchRanking dd {
+  width: 100%;
+  display: inline-block;
+}
+#main #index .r dl.searchRanking dd ol {
+  padding-left: 28px;
+  list-style: decimal-leading-zero;
+  width: 100%;
+  display: inline-block;
+}
+#main #index .r dl.searchRanking dd ol li {
+  color: #FFF;
+  width: 100%;
+  margin: 16px 0;
+}
+#main #index .r dl.searchRanking dd ol li img {
+  width: 80px;
+  padding: 0 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+#main #index .r dl.searchRanking dd ol li p {
+  display: inline-block;
+  vertical-align: middle;
+}
+#main #index .r dl.searchRanking dd ol li p span {
+  display: block;
+  width: 100%;
+}
+#main #index .r dl.searchRanking dd ol li p span:nth-of-type(even) {
+  color: #a6a6a6;
+}

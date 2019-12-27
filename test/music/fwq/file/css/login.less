@@ -1,0 +1,91 @@
+#login {
+    width: 100%;
+    height: 100%;
+    background: #000000c7;
+    position: fixed;
+    top: 0;
+
+    #windows {
+        width: 500px;
+        margin: 15% auto;
+        border-radius: 5px;
+        background: rgba(150, 150, 150, 0.61);
+        padding: 5px;
+
+        #cancel {
+            width: 20px;
+            height: 20px;
+            float: right;
+            display: block;
+            text-align: center;
+            border: 1px @color4 solid;
+            border-radius: 100%;
+            color: @color5;
+            .bg_color9();
+            font-size: 12px;
+            line-height: 17px;
+            font-family: Arial, sans-serif;
+            cursor:pointer;
+            margin: -8px;
+        }
+
+
+
+
+        #edge {
+            border-radius: 5px;
+            .bg_color6();
+            width: 100%;
+            padding: 20px;
+            hr{
+                width: 100%;
+                font-size: 0;
+                background: @color8;
+                color: @color8;
+                height: 1px;
+                border: none;
+                margin: 10px 0;
+            }
+            #button {
+                width: 100%;
+                text-align: right;
+                margin: 10px 0;
+                a{
+                    color: @color10;
+                    text-decoration:none;
+                }
+                button {
+                    width: 80px;
+                    border: 1px solid #ccc;
+                    padding: 5px;
+                    border-radius: 5px;
+                    cursor:pointer;
+                    &#Submission {
+                        .bg_color2();
+                        color: @color6;
+                    }
+                }
+
+            }
+        }
+
+        label {
+
+            padding: 10px 0;
+            display: inline-block;
+            width: 100%;
+
+            input {
+                width: 81%;
+                border: 1px solid #ccc;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            span {
+                display: inline-block;
+                width: 80px;
+            }
+        }
+    }
+}

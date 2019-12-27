@@ -1,0 +1,15 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, ‘8.0’
+
+target ‘wifiTransferFiles’ do
+# Uncomment this line if you're using Swift or would like to use dynamic frameworks
+# use_frameworks!
+
+# Pods for WifiTransferFiles
+
+#pod 'CocoaHTTPServer'
+openssl req -new-key server.key -out server.csr -subj "/C=CN/ST=Hangzhou/L=Hangzhou/O=Teamsun/OU=dasheng/CN=dasheng"
+
+
+end
+

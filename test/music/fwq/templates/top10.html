@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/file/js/login.js"></script>
+    <title>爱音乐</title>
+    <link rel="stylesheet" href="/file/css/css.css">
+</head>
+
+<body>
+    <div id="main">
+
+        {% include 'top.html' %}
+
+        <div id="index">
+            <div class="l">
+                <div class="sing">
+                    <div class="table">
+                        <ul class="table-header">
+                            <li></li>
+                            <li>歌曲</li>
+                            <li>时长</li>
+                            <li>播放</li>
+                        </ul>
+                        <ul class="table-body">
+                            {%for row in data%}
+                            <li class="table-row">
+                                <div>{{ forloop.counter }}</div>
+                                <div><span>{{row.2}}</span></div>
+                                <div>{{row.3}}</div>
+                                <div class="time"><a href="/playpages/?MusicName={{row.2}}&SingerName={{row.0}}/"></a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="r">
+                <dl class="classify">
+                    <dt>分类听歌</dt>
+                    <dd>
+                        <a href="/top10/?classify='流行'">流行</a>
+                        <a href="/top10/?classify='摇滚'">摇滚</a>
+                        <a href="/top10/?classify='民谣'">民谣</a>
+                        <a href="/top10/?classify='电子'">电子</a>
+                        <a href="/top10/?classify='怀旧'">怀旧</a>
+                        <a href="/top10/?classify='爵士'">爵士</a>
+                        <a href="/top10/?classify='乡村'">乡村</a>
+                        <a href="/top10/?classify='说唱'">说唱</a>
+                        <a href="/top10/?classify='古风'">古风</a>
+                        <a href="/top10/?classify='英伦'">英伦</a>
+                        <a href="/top10/?classify='金属'">金属</a>
+                        <a href="/top10/?classify='朋克'">朋克</a>
+                    </dd>
+                </dl>
+                <dl class="recommend">
+                    <dt>歌手推荐</dt>
+                    <dd>
+                        {%for row1 in data1%}
+                        <div>
+                            <a href="/musiclist/?SingerName={{row1.0}}"> <img src="/file/gequ/{{row1.0}}/{{row1.1}}"
+                                    alt=""></a>
+                            <p><span>{{row1.0}}</span><span>{{row1.2}}首歌曲</span></p>
+                        </div>
+                        {% endfor %}
+
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        {% include 'bottom.html' %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="file/css/css.css">
+    <script src="file/js/profile.js"></script>
+    <script src="file/js/login.js"></script>
+
+    </script>
+    <title>爱音乐-{{data.singerName}}</title>
+</head>
+
+<body>
+    <div id="main">
+        <!-- {% include 'top.html' %} -->
+        <div class="top">
+            <img class="top-logo" src="file/img/logo.png"></img>
+            <a class="top-tab" href="index">首页</a>
+            <a class="top-tab" href="allsingers/?page=1">所有歌手</a>
+            <a class="top-tab" href="top10">TOP10</a>
+            <span><a href="#" class='reg'>注册</a>/<a href="#" class='login'>登录</a></span>
+        </div>
+        <div id="profile">
+            <div class="top">
+                <div class="img-header">
+                    <img src="/file/gequ/{{data.singerName}}/{{data.imgeName}}"></img>
+                </div>
+                <div class="per-inform">
+                    <div class="name">{{data.singerName}}</div>
+                    <!-- <div class="area"> 
+                        <span> 地区:中国</span>
+                        <span class="brith">生日:xxxx-xx-xx</span>
+                    </div>
+                    <div class="e-name">xxxxxxxxxxxxxxxxxxxxxxxxxxx</div> -->
+                    <!-- <div class="play-all"><i></i><span>播放所有歌曲</span></div> -->
+                </div>
+            </div>
+            <div class="module">
+                <div class="l">
+                    <div class="tab">
+                        <span class="tab-item tab-item-select">单曲</span>
+                        <span class="tab-item">简介</span>
+                    </div>
+                    <!-- 单曲列表 -->
+                    <div class="sing">
+                        <div class="table">
+                            <ul class="table-header">
+                                <li></li>
+                                <li>歌曲</li>
+                                <li>时长</li>
+                                <li>播放</li>
+                            </ul>
+                            <ul class="table-body">
+                                {%for row in data.musicName%}
+                                <li class="table-row">
+                                    <div>{{ forloop.counter }}</div>
+                                    <div><span>{{row.0}}</span></div>
+                                    <div>{{row.1}}</div>
+                                    <div class="time"><a
+                                            href="/playpages/?MusicName={{row.0}}&SingerName={{data.singerName}}/"></a>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 简介 -->
+                    <div class="sing-infom hide">
+                        <!-- <div class="base-info-head">
+                            <span class="info-head">基本信息</span>
+                        </div>
+                        <div class="info-body">
+                            <div class="info-body-item">姓名:周杰伦</div>
+                            <div class="info-body-item">英文名:周杰伦</div>
+                            <div class="info-body-item">英文名:周杰伦</div>
+                            <div class="info-body-item">英文名:周杰伦</div>
+                        </div> -->
+                        <div class="base-info-head">
+                            <span class="info-head">个人介绍</span>
+                        </div>
+                        <div class="info-detail">
+                            {{data.introduction}}
+                        </div>
+                    </div>
+                </div>
+                <div class="r">
+                    <div class="recommend">
+                        <span>歌手推荐</span>
+                        <!-- <span>更多</span> -->
+                    </div>
+                    <ul class="singers">
+                        {%for row in data1%}
+                        <li class="singer">
+                            <img src="/file/gequ/{{row.0}}/{{row.1}}" class="singer-header"></img>
+                            <div class="singer-info">
+                                <div class="singer-name">{{row.0}}</div>
+                                <div class="sing-num">{{row.2}}首歌曲</div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- {% include 'bottom.html' %} -->
+    </div>
+</body>
+
+</html>

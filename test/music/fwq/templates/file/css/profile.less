@@ -1,0 +1,250 @@
+
+#main{
+    #profile *{
+        font-size: 14px;
+        color: @color4;
+    }  
+    #profile{
+        background: @color3;
+        min-height: 1024px;
+        display: inline-block;
+        width: 100%;
+        ul{
+            padding: 0;
+            list-style-type: none;
+            
+        }
+        .top{
+            display: flex;  
+            width: 100%;
+            height: 238px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            .img-header{
+                flex: 2;
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border-radius:50%;
+                    object-fit: cover;
+                }
+                // background: red;
+            }
+            .per-inform{
+                margin: 40px;
+                flex: 9; 
+                .name{
+                    font-size: 28px;
+                }
+                .area{
+                    span{
+                        float: left;
+                        margin-right: 10px;
+                    }
+                }
+                .e-name{
+                    clear: both;
+                }
+                .play-all{
+                    height: 36px;
+                    border-radius: 18px;
+                    background: @color2;
+                    line-height: 36px;
+                    width: 200px;
+                    padding-left: 10px;
+                    margin-top: 10px;
+                    i{
+                        display: block;
+                        float: left;
+                        // height: 20px;
+                        // width: 20px;
+                        // margin-left: 10px;
+                        margin-top:8px; 
+                        border-top:10px solid transparent;
+                        border-bottom:10px solid transparent;
+                        border-left:10px solid @color4;
+                    }
+                    span{
+                        display:block;
+                        float: left;
+                        margin-left: 20px;
+                        // margin-top: 8px;
+                    }
+                }
+            }
+        }
+        .module{
+            margin: 20px;  
+            display: flex;
+            .l {
+                flex: 9;
+                padding-bottom: 50px;
+                .tab{
+                    .tab-item{
+                        float: left;
+                        margin-right: 10px;
+                        padding: 2px 4px;
+                    }
+                    .tab-item-select{
+                        border-bottom: 2px solid @color2;
+                    }
+                }
+                .sing{
+                    clear: both;
+                    margin-top:40px; 
+                    .table{
+                        width: 100%;
+                        .table-header{
+                            width: 100%;
+                            padding: 10px;
+                            .table-header:after {
+                                content: '\20';
+                                display: block;
+                                height: 0;
+                                clear: both;
+                                visibility: hidden;
+                                overflow: hidden;
+                            }
+                                li{
+                                float: left;
+                                }
+                                li:nth-child(1){
+                                    width: 46px;
+                                    height: 22px;
+                                }
+                                li:nth-child(2){
+                                    width:300px;
+                                    height: 22px;
+                                }
+                                li:nth-child(3){
+                                    width:300px;
+                                    height: 22px;
+                                }
+                                // li:nth-child(4){
+                                // }
+                        }
+                        .table-body{
+                            width: 100%;
+                            .table-row{
+                                clear: both;
+                                width: 100%;
+                                padding: 10px;
+                                div{
+                                    float: left;
+                                    span{
+                                        display: block;
+                                        width: 240px;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                    }
+                                }
+                                div:nth-child(1){ 
+                                    width: 46px;
+                                }
+                                div:nth-child(2){
+                                    width:300px;
+                                }
+                                div:nth-child(3){
+                                    width:300px;
+                                }
+                                // div:nth-child(4){
+                                // }
+                                // .time:hover span{
+                                //     display: none;
+                                // }
+                                .time a{
+                                    margin-left: 10px;
+                                    display: block;
+                                    float: left;
+                                    width: 16px;
+                                    height: 16px;
+                                    background: url(/file/img/play.png) no-repeat;
+                                    background-color: transparent;
+                                    background-size: 100% 100%;
+                                }
+                            }
+                            .table-row:nth-child(2n+1){
+                                background-color: @color1;
+                            }
+                            .table-row:after {
+                                content: '\20';
+                                display: block;
+                                height: 0;
+                                clear: both;
+                                visibility: hidden;
+                                overflow: hidden;
+                            }
+                            
+                        }
+
+                    }
+                }
+
+                .hide{
+                    display:none
+                }
+                .sing-infom{
+                    clear: both;
+                    width: 100%;
+                    .base-info-head{
+                        clear: both;
+                        padding: 20px 0px 10px 0px; 
+                        .info-head{
+                            padding-left: 3px;
+                            border-left: @color2 2px solid;
+                        }
+                    }
+                    .info-body{
+                        width: 100%;
+                        .info-body-item{
+                            width: 50%;
+                            float: left;
+                            margin-top: 8px;
+                        }
+                    }
+                    .info-detail{
+                         word-break:break-word;
+                         padding-right: 20px;
+                    }
+                }
+            }
+
+            .r {
+                flex: 2;
+                padding-left: 30px;
+                .recommend{
+                    span{
+                        float: left;
+                    }
+                }
+                .singers{
+                    list-style-type: none;
+                    padding: 0;
+                    .singer{
+                        clear: both;
+                        padding-top: 24px;
+                        .singer-header{
+                            height: 60px;
+                            width: 60px;
+                            float: left;
+                            border-radius:50%;
+                            object-fit: cover;
+                            // background: red;
+                        }
+                        .singer-info{
+                            float: left;
+                            margin-top: 5px;
+                            div{
+                                margin-top: 5px;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}  

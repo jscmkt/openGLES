@@ -1,0 +1,382 @@
+#main {
+    #index {
+        .bg_color3();
+        display: flex;
+
+        .l {
+            padding: 0 30px;
+            flex: 9;
+            width: 860px;
+            position: relative;
+
+            .banner {
+                padding: 30px 0;
+                display: inline-block;
+                width: 100%;
+                font-size: 0;
+
+                p {
+                    display: inline-block;
+                    width: 380px;
+                    margin: 0 10px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .hot {
+                .title {
+                    padding: 10px 5px;
+                    color: @color6;
+
+                    span {
+                        font-size: 20px;
+                        font-weight: bolder;
+                    }
+
+                    &:before {
+                        content: ".";
+                        display: inline-block;
+                        width: 5px;
+                        margin: 0 10px 0 0;
+                        .bg_color2();
+                        color: @color2;
+                    }
+                }
+
+                .list {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    p {
+                        width: 140px;
+                        margin: 10px;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                        }
+
+                        span {
+                            padding-top: 9px;
+                            width: 100%;
+                            text-align: center;
+                            display: block;
+                            font-size: 14px;
+                            color: @color6;
+
+                            a {
+                                color: @color6;
+                                text-decoration: none;
+                            }
+
+                            i {
+                                font-style: normal;
+                                display: inline-block;
+                                width: 100%;
+                                color: @color8;
+                            }
+                        }
+                    }
+                }
+
+                margin-bottom: 36px;
+            }
+            .sing{
+                color: @color6;
+                clear: both;
+                margin-top:40px; 
+                .table{
+                    width: 100%;
+                    .table-header{
+                        list-style: none;
+                        width: 100%;
+                        padding: 10px;
+                        .table-header:after {
+                            content: '\20';
+                            display: block;
+                            height: 0;
+                            clear: both;
+                            visibility: hidden;
+                            overflow: hidden;
+                        }
+                            li{
+                            float: left;
+                            }
+                            li:nth-child(1){
+                                width: 46px;
+                                height: 22px;
+                            }
+                            li:nth-child(2){
+                                width:300px;
+                                height: 22px;
+                            }
+                            li:nth-child(3){
+                                width:300px;
+                                height: 22px;
+                            }
+                    }
+                    .table-body{
+                        list-style: none;
+                        width: 100%;
+                        .table-row{
+                            clear: both;
+                            width: 100%;
+                            padding: 10px;
+                            div{
+                                float: left;
+                                span{
+                                    display: block;
+                                    width: 240px;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                }
+                            }
+                            div:nth-child(1){ 
+                                width: 46px;
+                            }
+                            div:nth-child(2){
+                                width:300px;
+                            }
+                            div:nth-child(3){
+                                width:300px;
+                            }
+                            .time a{
+                                margin-left: 10px;
+                                display: block;
+                                float: left;
+                                width: 16px;
+                                height: 16px;
+                                background: url(/file/img/play.png) no-repeat;
+                                background-color: transparent;
+                                background-size: 100% 100%;
+                            }
+                        }
+                        .table-row:nth-child(2n+1){
+                            background-color: @color1;
+                        }
+                        .table-row:after {
+                            content: '\20';
+                            display: block;
+                            height: 0;
+                            clear: both;
+                            visibility: hidden;
+                            overflow: hidden;
+                        }
+                        
+                    }
+
+                }
+            }
+
+            .ranking {
+
+                .title {
+                    padding: 10px 5px;
+                    color: @color6;
+
+                    span {
+                        font-size: 20px;
+                        font-weight: bolder;
+                    }
+
+                    &:before {
+                        content: ".";
+                        display: inline-block;
+                        width: 5px;
+                        margin: 0 10px 0 0;
+                        .bg_color2();
+                        color: @color2;
+                    }
+                }
+
+                .list {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    div {
+                        .bg_color9();
+                        width: 250px;
+                        margin: 8px;
+                        display: inline-block;
+
+                        a {
+                            text-decoration: none;
+                            img {
+                                width: 100%;
+                                height: 100px;
+                                object-fit: cover;
+                            }
+                        }
+
+                        ol {
+                            padding-left: 28px;
+                            list-style: decimal-leading-zero;
+                            width: 100%;
+                            display: inline-block;
+
+                            li {
+                                color: @color6;
+                                width: 100%;
+                                margin: 16px 0;
+
+                                img {
+                                    width: 80px;
+                                    height: 80px;
+                                    vertical-align: middle;
+                                    display: inline-block;
+                                    margin: 0 5px;
+                                }
+
+                                p {
+                                    display: inline-block;
+                                    vertical-align: middle;
+
+                                    span,
+                                    a {
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                        display: block;
+                                        width: 110px;
+                                        color: @color6;
+                                        text-decoration: none;
+                                        &:nth-of-type(even) {
+                                            color: @color8;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .r {
+            padding: 0 16px;
+            border-left: 1px solid @color7;
+            width: 339px;
+
+            dl {
+                width: 100%;
+
+                dt {
+                    display: inline-block;
+                    line-height: 40px;
+                    color: @color6;
+                    font-weight: bolder;
+                    font-size: 14px;
+                }
+
+                &.classify {
+
+                    dd {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        a {
+                            text-decoration: none;
+                            display: inline-block;
+                            width: 31%;
+                            text-align: center;
+                            border-radius: 20px;
+                            margin: 5px 2px;
+                            line-height: 36px;
+                            color: @color8;
+                            .bg_color7();
+                        }
+                    }
+                }
+
+                &.recommend {
+                    dd {
+                        width: 100%;
+                        display: inline-block;
+
+                        div {
+                            width: 100%;
+                            margin-bottom: 10px;
+                            padding: 5px 0;
+
+                            img {
+                                width: 60px;
+                                height: 60px;
+                                display: inline-block;
+                                border-radius: 100%;
+                                vertical-align: middle;
+                                object-fit: cover;
+                            }
+
+                            p {
+                                display: inline-block;
+                                vertical-align: middle;
+                                padding-left: 10px;
+
+                                span {
+                                    width: 100%;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                    color: @color6;
+
+                                    &:nth-of-type(even) {
+                                        color: @color8;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.searchRanking {
+                    dd {
+                        width: 100%;
+                        display: inline-block;
+
+                        ol {
+                            padding-left: 28px;
+                            list-style: decimal-leading-zero;
+                            width: 100%;
+                            display: inline-block;
+
+                            li {
+                                color: @color6;
+                                width: 100%;
+                                margin: 16px 0;
+
+                                img {
+                                    width: 80px;
+                                    padding: 0 10px;
+                                    vertical-align: middle;
+                                    display: inline-block;
+                                }
+
+                                p {
+                                    display: inline-block;
+                                    vertical-align: middle;
+
+                                    span {
+                                        display: block;
+                                        width: 100%;
+
+                                        &:nth-of-type(even) {
+                                            color: @color8;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

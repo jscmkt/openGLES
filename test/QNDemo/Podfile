@@ -1,0 +1,16 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'QNDemo' do
+
+pod 'Alamofire'
+pod 'HandyJSON'
+pod 'MBProgressHUD'
+pod 'WechatOpenSDK'
+pod 'AlipaySDK-iOS'
+pod 'IQKeyboardManagerSwift'
+pod 'PLShortVideoKit/ex-libMuseProcessor'
+pod 'Qiniu'
+pod 'PLPlayerKit'
+end

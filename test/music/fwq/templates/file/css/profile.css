@@ -1,0 +1,185 @@
+#main #profile * {
+  font-size: 14px;
+  color: #e8e8e8;
+}
+#main #profile {
+  background: #272727;
+  min-height: 1024px;
+}
+#main #profile ul {
+  padding: 0;
+  list-style-type: none;
+}
+#main #profile .top {
+  display: flex;
+  width: 100%;
+  height: 238px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#main #profile .top .img-header {
+  flex: 2;
+}
+#main #profile .top .img-header img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+#main #profile .top .per-inform {
+  margin: 40px;
+  flex: 9;
+}
+#main #profile .top .per-inform .name {
+  font-size: 28px;
+}
+#main #profile .top .per-inform .area span {
+  float: left;
+  margin-right: 10px;
+}
+#main #profile .top .per-inform .e-name {
+  clear: both;
+}
+#main #profile .top .per-inform .play-all {
+  height: 36px;
+  border-radius: 18px;
+  background: #408bea;
+  line-height: 36px;
+  width: 200px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+#main #profile .top .per-inform .play-all i {
+  display: block;
+  float: left;
+  margin-top: 8px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #e8e8e8;
+}
+#main #profile .top .per-inform .play-all span {
+  display: block;
+  float: left;
+  margin-left: 20px;
+}
+#main #profile .module {
+  margin: 20px;
+  display: flex;
+}
+#main #profile .module .l {
+  flex: 9;
+}
+#main #profile .module .l .tab .tab-item {
+  float: left;
+  margin-right: 10px;
+  padding: 2px 4px;
+}
+#main #profile .module .l .tab .tab-item-select {
+  border-bottom: 2px solid #408bea;
+}
+#main #profile .module .l .sing {
+  clear: both;
+  margin-top: 40px;
+}
+#main #profile .module .l .sing .table {
+  width: 100%;
+}
+#main #profile .module .l .sing .table .table-header {
+  width: 100%;
+}
+#main #profile .module .l .sing .table .table-header li {
+  float: left;
+}
+#main #profile .module .l .sing .table .table-header li:nth-child(1) {
+  width: 46px;
+  height: 22px;
+}
+#main #profile .module .l .sing .table .table-header li:nth-child(2) {
+  width: 300px;
+  height: 22px;
+}
+#main #profile .module .l .sing .table .table-header li:nth-child(3) {
+  width: 300px;
+  height: 22px;
+}
+#main #profile .module .l .sing .table .table-body {
+  width: 100%;
+}
+#main #profile .module .l .sing .table .table-body .table-row {
+  clear: both;
+  width: 100%;
+}
+#main #profile .module .l .sing .table .table-body .table-row div {
+  float: left;
+}
+#main #profile .module .l .sing .table .table-body .table-row div:nth-child(1) {
+  width: 46px;
+}
+#main #profile .module .l .sing .table .table-body .table-row div:nth-child(2) {
+  width: 300px;
+}
+#main #profile .module .l .sing .table .table-body .table-row div:nth-child(3) {
+  width: 300px;
+}
+#main #profile .module .l .sing .table .table-body .table-row .time a {
+  margin-left: 10px;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: url(play.png) no-repeat;
+  background-color: #272727;
+  background-size: 100% 100%;
+}
+#main #profile .module .l .hide {
+  display: none;
+}
+#main #profile .module .l .sing-infom {
+  clear: both;
+  width: 100%;
+}
+#main #profile .module .l .sing-infom .base-info-head {
+  clear: both;
+  padding: 20px 0px 10px 0px;
+}
+#main #profile .module .l .sing-infom .base-info-head .info-head {
+  padding-left: 3px;
+  border-left: #408bea 2px solid;
+}
+#main #profile .module .l .sing-infom .info-body {
+  width: 100%;
+}
+#main #profile .module .l .sing-infom .info-body .info-body-item {
+  width: 50%;
+  float: left;
+  margin-top: 8px;
+}
+#main #profile .module .r {
+  flex: 2;
+}
+#main #profile .module .r .recommend span {
+  float: left;
+}
+#main #profile .module .r .singers {
+  list-style-type: none;
+  padding: 0;
+}
+#main #profile .module .r .singers .singer {
+  clear: both;
+  padding-top: 8px;
+}
+#main #profile .module .r .singers .singer .singer-header {
+  height: 60px;
+  width: 60px;
+  float: left;
+  border-radius: 50%;
+}
+#main #profile .module .r .singers .singer .singer-info {
+  float: left;
+  margin-top: 5px;
+}
+#main #profile .module .r .singers .singer .singer-info div {
+  margin-top: 5px;
+  margin-left: 5px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>歌词</title>
+    <link rel="stylesheet" href="file/css/css.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="main">
+
+        <div id="lyric">
+            <!-- {% include 'top.html' %} -->
+            <div class="top">
+                <img class="top-logo" src="file/img/logo.png"></img>
+                <a class="top-tab" href="index">首页</a>
+                <a class="top-tab" href="allsingers/?page=1">所有歌手</a>
+                <a class="top-tab" href="top10">TOP10</a>
+                <span><a href="#" class='reg'>注册</a>/<a href="#" class='login'>登录</a></span>
+            </div>
+            <div id="lyrica-wrap" class="content" value="{{data1}}"></div>
+            <audio class="footer player-controls" src="{{data}}" controls autoplay>请升级浏览器版本!</audio>
+        </div>
+    </div>
+    <script src="file/js/lyricLib.js"></script>
+    <script src="file/js/lyric.js"></script>
+</body>
+</html>

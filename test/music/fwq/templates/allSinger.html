@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="file/js/login.js"></script>
+    <title>爱音乐</title>
+    <link rel="stylesheet" href="file/css/css.css">
+</head>
+
+<body>
+    <div id="main">
+
+        <!-- {% include 'top.html' %} -->
+        <div class="top">
+            <img class="top-logo" src="file/img/logo.png"></img>
+            <a class="top-tab" href="index">首页</a>
+            <a class="top-tab" href="allsingers/?page=1">所有歌手</a>
+            <a class="top-tab" href="top10">TOP10</a>
+            <span><a href="#" class='reg'>注册</a>/<a href="#" class='login'>登录</a></span>
+        </div>
+
+        <div id="index">
+            <div class="l">
+                <dl class="hot">
+                    <dt class="title">
+                        <span>所有歌手</span>
+                    </dt>
+                    <dd class="list">
+
+                        {%for row in data%}
+                        <p>
+                            <a href="/musiclist/?SingerName={{row.0}}"><img src="/file/gequ/{{row.0}}/{{row.1}}"
+                                    alt=""></a>
+                            <span><a href="/playpages/?MusicName={{row.2}}&SingerName={{row.0}}/">{{row.2}}</a>
+                                <i>{{row.0}}</i></span>
+                        </p>
+                        {% endfor %}
+                    </dd>
+                </dl>
+                <div class="page-nav">
+                    {% if data2.1 <= 1 %}
+                    <a class="prev-page" href="#">上一页</a>
+                    {% else %}
+                    <a class="prev-page" href="?page={{data2.1|add:-1}}">上一页</a>
+                    {% endif %}
+                    {%for item in data2.0 %}
+                    {% if data2.1 == item|add:1 %}
+                    <a class="curr-page active" href="?page={{forloop.counter}}">{{forloop.counter}}</a>
+                    {% else %}
+                    <a class="curr-page" href="?page={{forloop.counter}}">{{forloop.counter}}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if data2.1 >= data2.0|length %}
+                    <a class="next-page" href="#">下一页</a>
+                    {% else %}
+                    <a class="next-page" href="?page={{data2.1|add:1}}">下一页</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="r">
+                <dl class="classify">
+                    <dt>分类听歌</dt>
+                    <dd>
+                        <a href="/top10/?classify='流行'">流行</a>
+                        <a href="/top10/?classify='摇滚'">摇滚</a>
+                        <a href="/top10/?classify='民谣'">民谣</a>
+                        <a href="/top10/?classify='电子'">电子</a>
+                        <a href="/top10/?classify='怀旧'">怀旧</a>
+                        <a href="/top10/?classify='爵士'">爵士</a>
+                        <a href="/top10/?classify='乡村'">乡村</a>
+                        <a href="/top10/?classify='说唱'">说唱</a>
+                        <a href="/top10/?classify='古风'">古风</a>
+                        <a href="/top10/?classify='英伦'">英伦</a>
+                        <a href="/top10/?classify='金属'">金属</a>
+                        <a href="/top10/?classify='朋克'">朋克</a>
+                    </dd>
+                </dl>
+                <dl class="recommend">
+                    <dt>歌手推荐</dt>
+                    <dd>
+                        {%for row1 in data1%}
+                        <div>
+                            <a href="/musiclist/?SingerName={{row1.0}}"> <img src="/file/gequ/{{row1.0}}/{{row1.1}}"
+                                    alt=""></a>
+                            <p><span>{{row1.0}}</span><span>{{row1.2}}首歌曲</span></p>
+                        </div>
+                        {% endfor %}
+
+                    </dd>
+                </dl>
+                <!-- <dl class="searchRanking">
+                    <dt>搜索歌曲排行</dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                        </ol>
+                    </dd>
+                </dl> -->
+            </div>
+        </div>
+
+        {% include 'bottom.html' %}
+    </div>
+</body>
+
+</html>

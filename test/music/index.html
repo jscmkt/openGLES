@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/file/css/index.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="index">
+            <div class="l">
+                <div class="banner">
+                    <p>
+                        <img src="/file/img/index-b1.jpg" alt="">
+                    </p>
+                    <p>
+                        <img src="/file/img/index-b2.jpg" alt="">
+                    </p>
+                </div>
+
+                <dl class="hot">
+                    <dt class="title">
+                        <span>热门歌曲</span>
+                    </dt>
+                    <dd class="list">
+
+                        {%for row in data%}
+                        <p>
+                            <img src="{{row.2}}" alt="">
+                            <span>{{row.1}} <i>{{row.0}}</i></span>
+                        </p>
+                        {% endfor %}
+                    </dd>
+                </dl>
+                <hr id="line" />
+                <dl class="ranking">
+                    <dt class="title"><span>排行榜</span></dt>
+                    <dd class="list">
+                        <div>
+                            <a href="#">
+                                <img src="/file/img/index-b3.jpg" alt="">
+                            </a>
+                            <ol>
+                                {%for row2 in data2%}
+                                <li>
+                                    <img src="{{row.2}}" alt="">
+                                    <p>
+                                        <span>{{row2.1}}</span>
+                                        <span>{{row2.0}}</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <img src="/file/img/index-b4.jpg" alt="">
+                            </a>
+                            <ol>
+                                {%for row3 in data3%}
+                                <li>
+                                    <img src="{{row3.2}}" alt="">
+                                    <p>
+                                        <span>{{row3.1}}</span>
+                                        <span>{{row3.0}}</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <img src="/file/img/index-b5.jpg" alt="">
+                            </a>
+                            <ol>
+                                {%for row4 in data4%}
+                                <li>
+                                    <img src="{{row4.2}}" alt="">
+                                    <p>
+                                        <span>{{row4.1}}</span>
+                                        <span>{{row4.0}}</span>
+                                    </p>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="r">
+                <dl class="classify">
+                    <dt>分类听歌</dt>
+                    <dd>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                    </dd>
+                </dl>
+                <dl class="recommend">
+                    <dt>歌手推荐</dt>
+                    <dd>
+                        {%for row1 in data1%}
+                        <div>
+                            <img src="{{row1.1}}" alt="">
+                            <p><span>{{row1.0}}</span><span>{{row1.2}}首歌曲</span></p>
+                        </div>
+                        {% endfor %}
+
+                    </dd>
+                </dl>
+                <dl class="searchRanking">
+                    <dt>搜索歌曲排行</dt>
+                    <dd>
+                        <ol>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <img src="/file/img/timg2.jpg" alt="">
+                                    <p><span>1</span><span>2</span></p>
+                                </div>
+                            </li>
+                        </ol>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

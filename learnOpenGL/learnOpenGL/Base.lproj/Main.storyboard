@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TqV-13-Znd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TTr-g1-jIc">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -300,6 +300,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3980" y="3307"/>
+        </scene>
+        <!--Camera Data And Draw View Controller-->
+        <scene sceneID="pkG-S4-6Fb">
+            <objects>
+                <viewController id="TTr-g1-jIc" customClass="CameraDataAndDrawViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JWc-Fh-l26" customClass="LYOpenGLView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="osL-LP-SkU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQY-YF-EnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3980" y="4035"/>
         </scene>
         <!--Normal Line View Controller-->
         <scene sceneID="FOJ-XG-CBo">

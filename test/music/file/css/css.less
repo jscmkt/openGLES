@@ -1,0 +1,103 @@
+@import "index.less";
+@import "top.less";
+@import "lyric.less";
+@import "profile.less";
+
+* {
+    box-sizing: border-box;
+    font-size: 14px;        
+    font-family: "微软雅黑";
+}   
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,   
+ul,
+li,
+dd,
+dt,
+dl,
+ol,
+p {
+    margin: 0;
+    padding: 0;     
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#line {
+    font-size: 0;
+    .bg_color7();
+    color: @color7;
+    height: 1px;
+    border: none;
+}
+
+#main {
+    width: 1200px;
+    margin: auto;
+}
+
+#main {
+    .top {
+        .top();
+    }
+
+}
+
+body {
+    .bg_color5();
+}
+
+@color1: #1c1e21;
+@color2: #408bea;
+@color3: #272727;
+@color4: #e8e8e8;
+@color5: #f5f7fa;
+@color6: #FFF;
+@color7: #3d3d3d;
+@color8: #a6a6a6;
+@color9: #2e2e2e;
+
+.bg_color1() {
+    background: @color1;
+}
+
+.bg_color2() {
+    background: @color2;
+}
+
+.bg_color3() {
+    background: @color3;
+}
+
+.bg_color4() {
+    background: @color4;
+}
+
+.bg_color5() {
+    background: @color5;
+}
+
+.bg_color6() {
+    background: @color6;
+}
+
+.bg_color7() {
+    background: @color7;
+}
+
+.bg_color8() {
+    background: @color8;
+}
+
+.bg_color9() {
+    background: @color9;
+}
